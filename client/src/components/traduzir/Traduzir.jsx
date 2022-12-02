@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Traduzir.css";
-
 
 const Traduzir = () => {
   return (

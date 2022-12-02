@@ -7,8 +7,6 @@ function App() {
   const [texto_traduzido, setTextTraduzido] = useState('');
   const [texto_original, setTextOriginal] = useState('');
   const [traducoes, setTraducoes] = useState([]);
-  const [id, setId] = useState(null);
-  const [modoEdicao, setModoEdicao] = useState(false);
 
   const fetchTraducoes = async () => {
     const response = await axios.get(`${baseUrl}/traducoes`);
@@ -35,25 +33,6 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleUpdate = async (id) => {
-    try {
-      const response = await axios.get(`${baseUrl}/traducao/${id}`);
-      setTextOriginal(response.data.texto_original);
-      setTextTraduzido(response.data.texto_traduzido);
-      setId(response.data.id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleEdit = async (e) => {
-    e.preventDefault();
-    setId(e.id);
-    setTextOriginal(e.texto_original);
-    setTextTraduzido(e.texto_traduzido);
-    setModoEdicao(true);
   };
 
   useEffect(() => {
